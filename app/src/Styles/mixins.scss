@@ -1,0 +1,11 @@
+@mixin kanit ($fs, $fw) {
+  font-family: Kanit;
+  font-size: $fs;
+  font-weight: $fw;
+}
+
+@mixin flex ($align, $justify) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}
