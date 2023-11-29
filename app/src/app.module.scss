@@ -1,0 +1,55 @@
+@import './Styles/fonts.scss';
+@import './Styles/mixins.scss';
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  max-width: 1000px;
+  padding: 40px 20px;
+  margin: auto;
+}
+
+.title {
+  margin: 0 0 20px;
+  text-align: center;
+
+  @include kanit (26px, 500);
+  color: #252525;
+}
+
+.input_wrap {
+  position: relative;
+}
+
+.input {
+  padding: 10px 16px;
+  box-sizing: border-box;
+  width: 100%;
+
+  border: 1px solid #6C63FF;
+  border-radius: 5px;
+  outline: none;
+
+  @include kanit (20px, 500);
+  color: #C3C1E5;
+
+  &::placeholder {
+    color: #C3C1E5;
+  }
+}
+
+.search {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.container {
+  @include flex (center, space-between);
+}
