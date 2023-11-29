@@ -5,12 +5,17 @@ body,
 html {
   margin: 0;
   padding: 0;
+  background-color: #ebc2af;
 }
 
 .wrapper {
-  max-width: 1000px;
+  position: relative;
+  height: 100vh;
+  max-width: 900px;
+
   padding: 40px 20px;
   margin: auto;
+  box-sizing: border-box;
 }
 
 .title {
@@ -23,6 +28,8 @@ html {
 
 .input_wrap {
   position: relative;
+  max-width: 600px;
+  width: 100%;
 }
 
 .input {
@@ -51,5 +58,23 @@ html {
 }
 
 .container {
-  @include flex (center, space-between);
+  @include flex (center, center);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.square {
+  background: url('./Assets/square-btn.svg');
+  width: 38px;
+  height: 38px;
+}
+
+.circle {
+  position: absolute;
+  bottom: 40px;
+  right: 20px;
+  background: url('./Assets/circle-btn.svg');
+  background-size: 50px, 50px;
+  width: 50px;
+  height: 50px;
 }
