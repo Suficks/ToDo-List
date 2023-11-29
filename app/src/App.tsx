@@ -1,11 +1,11 @@
-import React from 'react';
-
+import React, { FC } from 'react';
 import cn from './app.module.scss';
+
 import { ReactComponent as Search } from './Assets/search-icon.svg';
 import Button from './Components/Button';
 import Select from './Components/Select';
 
-const App = () => {
+const App: FC = () => {
   return (
     <div className={cn.wrapper}>
       <h1 className={cn.title}>TODO LIST</h1>

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import cn from './button.module.scss';
 
-const Button = ({ className }) => {
+interface IButtonProps {
+  className: string
+}
+
+const Button: FC<IButtonProps> = ({ className }) => {
   return (
     <button className={`${className} ${cn.button}`}></button>
   )
