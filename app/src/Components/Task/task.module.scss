@@ -1,0 +1,20 @@
+@import '../../Styles/mixins.scss';
+
+.text {
+  @include kanit (20px, 500);
+  margin: 0 0 20px;
+}
+
+.edit,
+.delete {
+  width: 18px;
+  height: 18px;
+}
+
+.edit {
+  background: url('../../Assets/edit-icon.svg');
+}
+
+.delete {
+  background: url('../../Assets/delete-icon.svg');
+}
