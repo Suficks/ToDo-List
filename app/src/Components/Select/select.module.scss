@@ -1,34 +1,84 @@
 @import '../../Styles/mixins.scss';
 
 .select {
-  @include flex (center, space-between);
+  position: relative;
   padding: 10px;
   box-sizing: border-box;
-  width: 85px;
+  width: 92px;
   height: 52px;
 
   border-radius: 5px;
   background-color: #6C63FF;
-
-  @include kanit (18px, 500);
-  color: #FFFFFF;
+  box-shadow: 0px 0px 4px 0px #6C63FF;
 
   cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: #534CC2;
+
+    .options {
+      border: 2px solid #534CC2;
+    }
+  }
 }
 
 .options {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  top: 32%;
+  left: -10px;
+  width: 88px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  border: 2px solid #6C63FF;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+
+  transform: translateY(-10%);
+  transition: 0.3s ease;
+}
+
+.selected {
+  margin: 0;
+  @include kanit (18px, 500);
+  color: #FFFFFF;
 }
 
 .item {
   margin: 0;
-  max-height: 100%;
 
-  &:not(:first-child) {
-    font-size: 0;
-    max-height: 0;
-    background-color: #6C63FF;
-    border-radius: 5px;
+  font-size: 0;
+  max-height: 0;
+
+  color: #6C63FF;
+
+  &:hover {
+    background-color: rgba(108, 99, 255, 0.20);
   }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+
+  transition: 0.3s ease;
+}
+
+.options_show {
+  transform: translateY(4%);
+}
+
+.item_show {
+  @include kanit (16px, 500);
+  max-height: 25px;
+  padding: 8px 4px;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
