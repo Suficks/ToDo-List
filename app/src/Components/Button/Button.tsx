@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import cn from './button.module.scss';
 
 interface IButtonProps {
   className: string
@@ -7,7 +6,7 @@ interface IButtonProps {
 
 const Button: FC<IButtonProps> = ({ className }) => {
   return (
-    <button className={`${className} ${cn.button}`}></button>
+    <button className={className}></button>
   )
 }
 

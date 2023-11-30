@@ -8,6 +8,13 @@ html {
   background-color: #ebc2af;
 }
 
+button {
+  padding: 0;
+
+  border: none;
+  cursor: pointer;
+}
+
 .wrapper {
   position: relative;
   height: 100vh;
