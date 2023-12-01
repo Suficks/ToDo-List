@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import cn from './modal.module.scss';
 import Button from 'Components/Button';
+import Input from 'Components/Input';
 
 interface IModalProps {
   isModalOpen: boolean
@@ -9,11 +10,11 @@ interface IModalProps {
 
 const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle }) => {
   return (
-    <div className={`${isModalOpen ? cn.modal_active : cn.modal}`}>
+    <div className={`${isModalOpen ? cn.active : cn.modal}`}>
       <h2 className={cn.title}>NEW NOTE</h2>
-      <input
-        type="text"
-        className={cn.input}
+      <Input
+        value=''
+        onChange={() => console.log('')}
         placeholder='Input your note...'
       />
       <div className={cn.container}>

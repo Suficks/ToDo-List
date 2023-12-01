@@ -30,9 +30,11 @@
 
 .reset,
 .apply {
-  @include flex (center, center);
+  margin-top: 128px;
   padding: 10px 22px;
+
   border: 1px solid #6C63FF;
+  @include flex (center, center);
   transition: 0.3s ease;
 
   &:hover {
@@ -49,7 +51,7 @@
   }
 }
 
-.modal_active {
+.active {
   @extend .modal;
   transform: translate(-50%, -50%);
 }

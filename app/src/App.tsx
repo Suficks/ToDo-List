@@ -6,6 +6,7 @@ import Button from './Components/Button';
 import Select from './Components/Select';
 import Task from 'Components/Task';
 import Modal from 'Components/Modal';
+import Input from 'Components/Input';
 import withApp from 'withApp';
 
 interface IAppProps {
@@ -27,11 +28,9 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue }) => {
       <h1 className={cn.title}>TODO LIST</h1>
       <div className={cn.container}>
         <div className={cn.input_wrap}>
-          <input
+          <Input
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            type="text"
-            className={cn.input}
             placeholder='Search note...'
           />
           <Search className={cn.search} />
