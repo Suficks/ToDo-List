@@ -4,7 +4,8 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translateX(-300%);
+  transform: translate(-300%, -50%);
+  z-index: 2;
 
   padding: 18px 30px;
   max-width: 500px;
@@ -14,7 +15,7 @@
   background-color: #FFF;
   text-align: center;
 
-  transition: 0.5s ease;
+  transition: 0.3s ease;
 }
 
 .title {

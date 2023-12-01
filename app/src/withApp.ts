@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 
-import { RootState } from "Redux/store"
+import { AppDispatch, RootState } from "Redux/store"
 import { setSearchValue } from "Redux/tasks/actions"
 
 const mapStateToProps = (state: RootState) => {
@@ -9,7 +9,7 @@ const mapStateToProps = (state: RootState) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
     setSearchValue(value: string) {
       dispatch(setSearchValue(value))

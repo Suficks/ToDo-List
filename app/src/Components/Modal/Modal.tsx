@@ -4,9 +4,10 @@ import Button from 'Components/Button';
 
 interface IModalProps {
   isModalOpen: boolean
+  onModalToggle: () => void
 }
 
-const Modal: FC<IModalProps> = ({ isModalOpen }) => {
+const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle }) => {
   return (
     <div className={`${isModalOpen ? cn.modal_active : cn.modal}`}>
       <h2 className={cn.title}>NEW NOTE</h2>
@@ -16,7 +17,10 @@ const Modal: FC<IModalProps> = ({ isModalOpen }) => {
         placeholder='Input your note...'
       />
       <div className={cn.container}>
-        <Button className={cn.reset} text='CANCEL' />
+        <Button
+          className={cn.reset}
+          text='CANCEL'
+          onClick={onModalToggle} />
         <Button className={cn.apply} text='APPLY' />
       </div>
     </div>

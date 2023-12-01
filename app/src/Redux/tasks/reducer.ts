@@ -1,4 +1,8 @@
 import { SET_SEARCH_VALUE } from "./action-types"
+import * as actions from './actions'
+
+export type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never
+export type ActionTypes = ReturnType<InferValueTypes<typeof actions>>
 
 type TTasksState = {
   /** Значение строки поиска */
@@ -30,7 +34,7 @@ const initialState: TTasksState = {
   tasks: []
 }
 
-const tasks = (state = initialState, action): TTasksState => {
+const tasks = (state = initialState, action: ActionTypes): TTasksState => {
   switch (action.type) {
     case SET_SEARCH_VALUE:
       return { ...state, searchValue: action.payload }

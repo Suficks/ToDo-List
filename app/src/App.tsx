@@ -18,6 +18,10 @@ interface IAppProps {
 const App: FC<IAppProps> = ({ searchValue, setSearchValue }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const onModalToggle = () => {
+    setIsModalOpen(!isModalOpen)
+  }
+
   return (
     <div className={cn.wrapper}>
       <h1 className={cn.title}>TODO LIST</h1>
@@ -38,9 +42,11 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue }) => {
       <Task />
       <Button
         className={cn.circle}
-        onClick={() => setIsModalOpen(!isModalOpen)} />
-      <Modal isModalOpen={isModalOpen} />
-      <div className={isModalOpen ? cn.active : cn.overlay}></div>
+        onClick={onModalToggle} />
+      <Modal isModalOpen={isModalOpen} onModalToggle={onModalToggle} />
+      <div
+        className={isModalOpen ? cn.active : cn.overlay}
+        onClick={onModalToggle}></div>
     </div>
   );
 }

@@ -7,9 +7,9 @@ interface IButtonProps {
 }
 
 
-const Button: FC<IButtonProps> = ({ className, text }) => {
+const Button: FC<IButtonProps> = ({ className, text, onClick }) => {
   return (
-    <button className={className}>{text}</button>
+    <button className={className} onClick={onClick}>{text}</button>
   )
 }
 
