@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import cn from './app.module.scss';
 
 import { ReactComponent as Search } from './Assets/search-icon.svg';
 import Button from './Components/Button';
 import Select from './Components/Select';
 import Task from 'Components/Task';
+import Modal from 'Components/Modal';
 import withApp from 'withApp';
 
 interface IAppProps {
@@ -15,6 +16,8 @@ interface IAppProps {
 }
 
 const App: FC<IAppProps> = ({ searchValue, setSearchValue }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className={cn.wrapper}>
       <h1 className={cn.title}>TODO LIST</h1>
@@ -33,7 +36,11 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue }) => {
         <Button className={cn.square} />
       </div>
       <Task />
-      <Button className={cn.circle} />
+      <Button
+        className={cn.circle}
+        onClick={() => setIsModalOpen(!isModalOpen)} />
+      <Modal isModalOpen={isModalOpen} />
+      <div className={isModalOpen ? cn.active : cn.overlay}></div>
     </div>
   );
 }

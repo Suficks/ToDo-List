@@ -1,0 +1,54 @@
+@import '../../Styles/mixins.scss';
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-300%);
+
+  padding: 18px 30px;
+  max-width: 500px;
+  width: 100%;
+
+  border-radius: 16px;
+  background-color: #FFF;
+  text-align: center;
+
+  transition: 0.5s ease;
+}
+
+.title {
+  margin: 0 0 25px;
+  @include kanit (24px, 500);
+  color: #252525;
+}
+
+.container {
+  @include flex (center, space-between);
+}
+
+.reset,
+.apply {
+  @include flex (center, center);
+  padding: 10px 22px;
+  border: 1px solid #6C63FF;
+  transition: 0.3s ease;
+
+  &:hover {
+    background-color: #534CC2;
+  }
+}
+
+.reset {
+  color: #6C63FF;
+  background-color: transparent;
+
+  &:hover {
+    color: #FFF;
+  }
+}
+
+.modal_active {
+  @extend .modal;
+  transform: translate(-50%, -50%);
+}
