@@ -8,7 +8,7 @@ const Task = () => {
         <input type="checkbox" className={cn.checkbox} />
         <span className={cn.fake}></span>
       </label>
-      <p className={cn.text}>SDSLDlslalk</p>
+      <p className={cn.text}>Lorem input</p>
       <div className={cn.btn_container}>
         <button className={cn.edit}></button>
         <button className={cn.delete}></button>
