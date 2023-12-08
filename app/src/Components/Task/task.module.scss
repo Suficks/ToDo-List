@@ -3,8 +3,13 @@
 .task {
   width: 75%;
   margin: auto;
+  margin-bottom: 20px;
 
   @include flex (center, space-between);
+}
+
+.label {
+  line-height: 0;
 }
 
 .checkbox {
@@ -66,13 +71,4 @@
 .delete {
   background: url('../../Assets/delete-icon.svg');
   background-size: 20px 20px;
-}
-
-.empty_wrap {
-  margin: auto;
-  text-align: center;
-}
-
-.empty {
-  @include kanit (20px, 400);
 }

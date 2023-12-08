@@ -100,3 +100,12 @@ button {
   opacity: 1;
   pointer-events: all;
 }
+
+.empty_wrap {
+  margin: auto;
+  text-align: center;
+}
+
+.empty {
+  @include kanit (20px, 400);
+}

@@ -8,15 +8,23 @@ import Task from 'Components/Task';
 import Modal from 'Components/Modal';
 import Input from 'Components/Input';
 import withApp from 'withApp';
+import { TTask } from 'Redux/tasks/reducer';
+import EmptyImg from './Assets/empty-icon-light.svg';
 
 interface IAppProps {
   /** Значение строки поиска */
   searchValue: string
+  /** Значение инпута с новой задачей */
+  inputValue: string
   /** Записать значение поиска */
   setSearchValue: (value: string) => void
+  /** Записать значение инпута с новой задачей */
+  setInputValue: (value: string) => void
+  /** Массив с задачами */
+  tasks: TTask[]
 }
 
-const App: FC<IAppProps> = ({ searchValue, setSearchValue }) => {
+const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onModalToggle = () => {
@@ -38,14 +46,25 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue }) => {
         <Select />
         <Button className={cn.square} />
       </div>
-      <Task />
-      <Button
+      {tasks.length === 0 ? (
+        <div className={cn.empty_wrap}>
+          <img className={cn.emptyImg} src={EmptyImg} alt="" />
+          <p className={cn.empty}>Empty...</p>
+        </div>
+      ) : (
+        tasks.map((item: TTask) => {
+          return <Task text={item.text} />
+        }))}
+      < Button
         className={cn.circle}
         onClick={onModalToggle} />
-      <Modal isModalOpen={isModalOpen} onModalToggle={onModalToggle} />
+      <Modal
+        isModalOpen={isModalOpen}
+        onModalToggle={onModalToggle} />
       <div
         className={isModalOpen ? cn.active : cn.overlay}
-        onClick={onModalToggle}></div>
+        onClick={onModalToggle}>
+      </div>
     </div>
   );
 }

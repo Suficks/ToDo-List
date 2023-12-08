@@ -5,7 +5,8 @@ import { setSearchValue } from "Redux/tasks/actions"
 
 const mapStateToProps = (state: RootState) => {
   return {
-    searchValue: state.searchValue
+    searchValue: state.searchValue,
+    tasks: state.tasks
   }
 }
 
@@ -13,7 +14,7 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
     setSearchValue(value: string) {
       dispatch(setSearchValue(value))
-    }
+    },
   }
 }
 
