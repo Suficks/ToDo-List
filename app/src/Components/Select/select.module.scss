@@ -4,7 +4,7 @@
   position: relative;
   padding: 10px;
   box-sizing: border-box;
-  width: 92px;
+  width: 140px;
   height: 51px;
 
   border-radius: 5px;
@@ -45,6 +45,7 @@
   margin: 0;
   @include kanit (18px, 500);
   color: #FFFFFF;
+  text-transform: uppercase;
 }
 
 .item {
@@ -70,15 +71,18 @@
 }
 
 .options_show {
+  @extend .options;
   transform: translateY(4%);
 }
 
 .item_show {
+  @extend .item;
   @include kanit (16px, 500);
   max-height: 25px;
   padding: 8px 4px;
 }
 
 .rotate {
+  @extend .arrow;
   transform: rotate(180deg);
 }
