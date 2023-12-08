@@ -5,11 +5,11 @@ import {
   SET_FILTER_TYPE
 } from "./action-types";
 
-import { TFilterType } from "./reducer";
+import { TFilterType, TTask } from "./reducer";
 
-export const addTask = (note: string) => ({
+export const addTask = (payload: TTask) => ({
   type: ADD_TASK,
-  payload: note
+  payload
 } as const)
 
 export const setSearchValue = (value: string) => ({

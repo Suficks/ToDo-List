@@ -3,6 +3,7 @@ import cn from './modal.module.scss';
 import Button from '../Button';
 import Input from '../Input';
 import withModal from './withModal';
+import { TTask } from 'Redux/tasks/reducer';
 
 interface IModalProps {
   /** Открыто ли модальное окно */
@@ -11,11 +12,29 @@ interface IModalProps {
   onModalToggle: () => void
   /** Записать значение инпута с новой задачей */
   setInputValue: (value: string) => void
+  /** Добавить задачу в массив всех задач*/
+  addTask: (value: TTask) => void
   /** Значение инпута с новой задачей */
   inputValue: string
 }
 
-const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inputValue }) => {
+const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inputValue, addTask }) => {
+
+  const modalClose = () => {
+    setInputValue('')
+    onModalToggle()
+  }
+
+  const onCreateTask = () => {
+    const task: TTask = {
+      id: 'asad',
+      text: inputValue,
+      progress: 'incomplete'
+    }
+    addTask(task)
+    modalClose()
+  }
+
   return (
     <div className={`${isModalOpen ? cn.active : cn.modal}`}>
       <h2 className={cn.title}>NEW NOTE</h2>
@@ -28,8 +47,11 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
         <Button
           className={cn.reset}
           text='CANCEL'
-          onClick={onModalToggle} />
-        <Button className={cn.apply} text='APPLY' />
+          onClick={modalClose} />
+        <Button
+          className={cn.apply}
+          text='APPLY'
+          onClick={onCreateTask} />
       </div>
     </div>
   )

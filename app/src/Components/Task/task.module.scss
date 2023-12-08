@@ -5,7 +5,6 @@
   margin: auto;
 
   @include flex (center, space-between);
-  cursor: pointer;
 }
 
 .checkbox {
@@ -67,4 +66,13 @@
 .delete {
   background: url('../../Assets/delete-icon.svg');
   background-size: 20px 20px;
+}
+
+.empty_wrap {
+  margin: auto;
+  text-align: center;
+}
+
+.empty {
+  @include kanit (20px, 400);
 }

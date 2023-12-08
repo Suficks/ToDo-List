@@ -1,7 +1,8 @@
 import {
   SET_SEARCH_VALUE,
   SET_INPUT_VALUE,
-  SET_FILTER_TYPE
+  SET_FILTER_TYPE,
+  ADD_TASK
 }
   from "./action-types"
 import * as actions from './actions'
@@ -21,16 +22,16 @@ type TTasksState = {
   /** Цветовая тема приложения */
   theme: 'light' | 'dark'
   /** Массив задач */
-  tasks: TTasks[]
+  tasks: TTask[]
 }
 
-type TTasks = {
+export type TTask = {
   /** Идентификатор задачи */
   id: string
   /** Текст задачи */
   text: string
-  /** Тип задачи: выполнена или нет */
-  type: 'complete' | 'incomplete'
+  /** Прогресс по  задачи: выполнена или нет */
+  progress: 'complete' | 'incomplete'
 }
 
 const initialState: TTasksState = {
@@ -49,6 +50,8 @@ const tasks = (state = initialState, action: ActionTypes): TTasksState => {
       return { ...state, inputValue: action.payload }
     case SET_FILTER_TYPE:
       return { ...state, selectedType: action.payload }
+    case ADD_TASK:
+      return { ...state, tasks: [...state.tasks, action.payload] }
     default: return state
   }
 }
