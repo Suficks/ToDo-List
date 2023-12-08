@@ -4,6 +4,7 @@ import Button from '../Button';
 import Input from '../Input';
 import withModal from './withModal';
 import { TTask } from 'Redux/tasks/reducer';
+import { v4 as uuidv4 } from 'uuid';
 
 interface IModalProps {
   /** Открыто ли модальное окно */
@@ -19,7 +20,6 @@ interface IModalProps {
 }
 
 const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inputValue, addTask }) => {
-
   const modalClose = () => {
     setInputValue('')
     onModalToggle()
@@ -27,7 +27,7 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
 
   const onCreateTask = () => {
     const task: TTask = {
-      id: 'asad',
+      id: uuidv4(),
       text: inputValue,
       progress: 'incomplete'
     }
