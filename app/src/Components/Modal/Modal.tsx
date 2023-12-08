@@ -1,20 +1,27 @@
 import React, { FC } from 'react';
 import cn from './modal.module.scss';
-import Button from 'Components/Button';
-import Input from 'Components/Input';
+import Button from '../Button';
+import Input from '../Input';
+import withModal from './withModal';
 
 interface IModalProps {
+  /** Открыто ли модальное окно */
   isModalOpen: boolean
+  /** Открытие/ закрытие модального окна */
   onModalToggle: () => void
+  /** Записать значение инпута с новой задачей */
+  setInputValue: (value: string) => void
+  /** Значение инпута с новой задачей */
+  inputValue: string
 }
 
-const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle }) => {
+const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inputValue }) => {
   return (
     <div className={`${isModalOpen ? cn.active : cn.modal}`}>
       <h2 className={cn.title}>NEW NOTE</h2>
       <Input
-        value=''
-        onChange={() => console.log('')}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
         placeholder='Input your note...'
       />
       <div className={cn.container}>
@@ -28,4 +35,4 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle }) => {
   )
 }
 
-export default Modal
+export default withModal(Modal)
