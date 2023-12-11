@@ -2,7 +2,8 @@ import {
   SET_SEARCH_VALUE,
   SET_INPUT_VALUE,
   SET_FILTER_TYPE,
-  ADD_TASK
+  ADD_TASK,
+  DELETE_TASK
 }
   from "./action-types"
 import * as actions from './actions'
@@ -52,6 +53,8 @@ const tasks = (state = initialState, action: ActionTypes): TTasksState => {
       return { ...state, selectedType: action.payload }
     case ADD_TASK:
       return { ...state, tasks: [...state.tasks, action.payload] }
+    case DELETE_TASK:
+      return { ...state, tasks: state.tasks.filter(item => item.id !== action.payload) }
     default: return state
   }
 }

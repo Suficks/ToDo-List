@@ -1,20 +1,14 @@
 import { connect } from "react-redux"
 
-import { AppDispatch, RootState } from "Redux/store"
-import { setSearchValue } from "Redux/tasks/actions"
-
-const mapStateToProps = (state: RootState) => {
-  return {
-    inputValue: state.inputValue,
-  }
-}
+import { AppDispatch } from "../../Redux/store"
+import { deleteTask } from "../../Redux/tasks/actions"
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    setSearchValue(value: string) {
-      dispatch(setSearchValue(value))
-    },
+    deleteTask(id: string) {
+      dispatch(deleteTask(id))
+    }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)
+export default connect(null, mapDispatchToProps)

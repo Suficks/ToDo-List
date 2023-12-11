@@ -1,8 +1,9 @@
 import {
   ADD_TASK,
+  DELETE_TASK,
   SET_SEARCH_VALUE,
   SET_INPUT_VALUE,
-  SET_FILTER_TYPE
+  SET_FILTER_TYPE,
 } from "./action-types";
 
 import { TFilterType, TTask } from "./reducer";
@@ -10,6 +11,11 @@ import { TFilterType, TTask } from "./reducer";
 export const addTask = (payload: TTask) => ({
   type: ADD_TASK,
   payload
+} as const)
+
+export const deleteTask = (id: string) => ({
+  type: DELETE_TASK,
+  payload: id
 } as const)
 
 export const setSearchValue = (value: string) => ({

@@ -52,9 +52,9 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks }) => {
           <p className={cn.empty}>Empty...</p>
         </div>
       ) : (
-        tasks.map((item: TTask) => {
-          return <Task text={item.text} />
-        }))}
+        tasks.map((item: TTask) => (
+          <Task text={item.text} key={item.id} id={item.id} />
+        )))}
       < Button
         className={cn.circle}
         onClick={onModalToggle} />
