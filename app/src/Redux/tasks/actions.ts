@@ -1,11 +1,13 @@
 import {
   ADD_TASK,
   DELETE_TASK,
+  CHANGE_TASK,
   SET_SEARCH_VALUE,
   SET_INPUT_VALUE,
   SET_FILTER_TYPE,
 } from "./action-types";
 
+import { TEditableComment } from "Components/Modal/Modal";
 import { TFilterType, TTask } from "./reducer";
 
 export const addTask = (payload: TTask) => ({
@@ -16,6 +18,11 @@ export const addTask = (payload: TTask) => ({
 export const deleteTask = (id: string) => ({
   type: DELETE_TASK,
   payload: id
+} as const)
+
+export const changeTask = (editableComment: TEditableComment) => ({
+  type: CHANGE_TASK,
+  payload: editableComment
 } as const)
 
 export const setSearchValue = (value: string) => ({

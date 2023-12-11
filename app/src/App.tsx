@@ -26,7 +26,8 @@ interface IAppProps {
 
 const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [editableComment, setEditableComment] = useState({ id: '', text: '' });
+  console.log(editableComment);
   const onModalToggle = () => {
     setIsModalOpen(!isModalOpen)
   }
@@ -53,17 +54,29 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks }) => {
         </div>
       ) : (
         tasks.map((item: TTask) => (
-          <Task text={item.text} key={item.id} id={item.id} />
+          <Task
+            text={item.text}
+            key={item.id}
+            id={item.id}
+            onModalToggle={onModalToggle}
+            setEditableComment={setEditableComment}
+          />
         )))}
       < Button
         className={cn.circle}
         onClick={onModalToggle} />
       <Modal
         isModalOpen={isModalOpen}
-        onModalToggle={onModalToggle} />
+        onModalToggle={onModalToggle}
+        editableComment={editableComment}
+        setEditableComment={setEditableComment}
+      />
       <div
         className={isModalOpen ? cn.active : cn.overlay}
-        onClick={onModalToggle}>
+        onClick={() => {
+          onModalToggle();
+          setEditableComment({ id: '', text: '' })
+        }}>
       </div>
     </div>
   );

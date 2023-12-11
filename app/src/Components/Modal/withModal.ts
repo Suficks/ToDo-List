@@ -1,8 +1,9 @@
 import { connect } from "react-redux"
 
 import { AppDispatch, RootState } from "../../Redux/store"
-import { setInputValue, addTask } from "../../Redux/tasks/actions"
+import { setInputValue, addTask, changeTask } from "../../Redux/tasks/actions"
 import { TTask } from "Redux/tasks/reducer"
+import { TEditableComment } from "./Modal"
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -17,6 +18,9 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
     },
     addTask(value: TTask) {
       dispatch(addTask(value))
+    },
+    changeTask(editableComment: TEditableComment) {
+      dispatch(changeTask(editableComment))
     }
   }
 }

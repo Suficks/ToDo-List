@@ -1,13 +1,17 @@
 import { connect } from "react-redux"
 
 import { AppDispatch } from "../../Redux/store"
-import { deleteTask } from "../../Redux/tasks/actions"
+import { deleteTask, setInputValue } from "../../Redux/tasks/actions"
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
     deleteTask(id: string) {
       dispatch(deleteTask(id))
+    },
+    setInputValue(value: string) {
+      dispatch(setInputValue(value))
     }
+
   }
 }
 
