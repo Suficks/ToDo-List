@@ -5,10 +5,12 @@ import {
   SET_SEARCH_VALUE,
   SET_INPUT_VALUE,
   SET_FILTER_TYPE,
+  CHANGE_TASK_PROGRESS
 } from "./action-types";
 
 import { TEditableComment } from "Components/Modal/Modal";
 import { TFilterType, TTask } from "./reducer";
+import { TCurrentTaskProgress } from "Components/Task/Task";
 
 export const addTask = (payload: TTask) => ({
   type: ADD_TASK,
@@ -38,4 +40,9 @@ export const setInputValue = (value: string) => ({
 export const setFilterType = (selectedType: TFilterType) => ({
   type: SET_FILTER_TYPE,
   payload: selectedType
+} as const)
+
+export const changeTaskProgress = (progress: TCurrentTaskProgress) => ({
+  type: CHANGE_TASK_PROGRESS,
+  payload: progress
 } as const)

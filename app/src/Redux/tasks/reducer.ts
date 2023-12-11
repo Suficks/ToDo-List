@@ -1,12 +1,14 @@
 import {
+  ADD_TASK,
+  DELETE_TASK,
+  CHANGE_TASK,
   SET_SEARCH_VALUE,
   SET_INPUT_VALUE,
   SET_FILTER_TYPE,
-  ADD_TASK,
-  DELETE_TASK,
-  CHANGE_TASK
+  CHANGE_TASK_PROGRESS
 }
   from "./action-types"
+
 import * as actions from './actions'
 
 export type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never
@@ -57,10 +59,35 @@ const tasks = (state = initialState, action: ActionTypes): TTasksState => {
     case DELETE_TASK:
       return { ...state, tasks: state.tasks.filter(item => item.id !== action.payload) }
     case CHANGE_TASK:
-      const { id, text } = action.payload;
-      const currentTask = state.tasks.findIndex(item => item.id === id);
-      state.tasks[currentTask].text = text;
-      return { ...state, tasks: state.tasks }
+      {
+        const { id, text } = action.payload
+        return {
+          ...state,
+          tasks: state.tasks.map((item) => {
+            if (item.id === id) {
+              return {
+                ...item, text,
+              }
+            }
+            return item
+          })
+        }
+      }
+    case CHANGE_TASK_PROGRESS:
+      {
+        const { id, progress } = action.payload
+        return {
+          ...state,
+          tasks: state.tasks.map((item) => {
+            if (item.id === id) {
+              return {
+                ...item, progress,
+              }
+            }
+            return item
+          })
+        }
+      }
     default: return state
   }
 }

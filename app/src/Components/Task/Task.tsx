@@ -4,6 +4,11 @@ import cn from './task.module.scss';
 import withTask from './withTask';
 import { TEditableComment } from 'Components/Modal/Modal';
 
+export type TCurrentTaskProgress = {
+  id: string,
+  progress: 'complete' | 'incomplete'
+}
+
 interface ITaskProps {
   /** Текст задачи */
   text: string
@@ -15,14 +20,22 @@ interface ITaskProps {
   onModalToggle: () => void
   /** Передать текст и индекс редактируемой задачи */
   setEditableComment: (editableComment: TEditableComment) => void
+  /** Изменение прогресса задачи (выполнена/невыполнена) */
+  changeTaskProgress: (progress: TCurrentTaskProgress) => void
 }
 
-const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditableComment }) => {
+const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditableComment, changeTaskProgress }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleTaskEdit = () => {
     setEditableComment({ id, text })
     onModalToggle()
+  }
+
+  const handleCheckbox = () => {
+    setIsChecked(!isChecked)
+    if (isChecked) changeTaskProgress({ id, progress: 'incomplete' })
+    else changeTaskProgress({ id, progress: 'complete' })
   }
 
   return (
@@ -31,7 +44,7 @@ const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditable
         <input
           type="checkbox"
           className={cn.checkbox}
-          onChange={() => { setIsChecked(!isChecked) }}
+          onChange={handleCheckbox}
         />
         <span className={cn.fake}></span>
       </label>

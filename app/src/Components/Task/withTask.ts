@@ -1,7 +1,8 @@
 import { connect } from "react-redux"
 
 import { AppDispatch } from "../../Redux/store"
-import { deleteTask, setInputValue } from "../../Redux/tasks/actions"
+import { changeTaskProgress, deleteTask, setInputValue } from "../../Redux/tasks/actions"
+import { TCurrentTaskProgress } from "./Task"
 
 const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
@@ -10,8 +11,10 @@ const mapDispatchToProps = (dispatch: AppDispatch) => {
     },
     setInputValue(value: string) {
       dispatch(setInputValue(value))
-    }
-
+    },
+    changeTaskProgress(progress: TCurrentTaskProgress) {
+      dispatch(changeTaskProgress(progress))
+    },
   }
 }
 
