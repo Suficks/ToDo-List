@@ -80,6 +80,14 @@
   @include fira (20px, 500);
 }
 
+.text_checked {
+  @extend .text;
+  text-decoration: line-through;
+  text-decoration-color: rgba(37, 37, 37, 0.50);
+  text-decoration-thickness: 1px;
+  color: rgba(37, 37, 37, 0.50);
+}
+
 .edit,
 .delete {
   width: 20px;
