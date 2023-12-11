@@ -99,9 +99,19 @@
 
   background: url('../../Assets/edit-icon.svg') no-repeat;
   background-size: 20px 20px;
+  transition: 0.2s ease;
+
+  &:hover {
+    filter: invert(38%) sepia(95%) saturate(2776%) hue-rotate(228deg) brightness(100%) contrast(104%);
+  }
 }
 
 .delete {
   background: url('../../Assets/delete-icon.svg');
   background-size: 20px 20px;
+  transition: 0.2s ease;
+
+  &:hover {
+    filter: invert(9%) sepia(100%) saturate(7312%) hue-rotate(7deg) brightness(94%) contrast(110%);
+  }
 }
