@@ -18,7 +18,7 @@ button {
   background-color: #6C63FF;
   border-radius: 5px;
 
-  @include kanit (18px, 500);
+  @include fira (18px, 500);
   color: #FFF;
 }
 
@@ -36,7 +36,7 @@ button {
   margin: 0 0 20px;
   text-align: center;
 
-  @include kanit (26px, 500);
+  @include fira (26px, 500);
   color: #252525;
 }
 
@@ -107,5 +107,5 @@ button {
 }
 
 .empty {
-  @include kanit (20px, 400);
+  @include fira (20px, 400);
 }

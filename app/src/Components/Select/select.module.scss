@@ -5,7 +5,7 @@
   padding: 10px;
   box-sizing: border-box;
   width: 140px;
-  height: 51px;
+  height: 45px;
 
   border-radius: 5px;
   background-color: #6C63FF;
@@ -43,7 +43,7 @@
 
 .selected {
   margin: 0;
-  @include kanit (18px, 500);
+  @include fira (18px, 500);
   color: #FFFFFF;
   text-transform: uppercase;
 }
@@ -77,7 +77,7 @@
 
 .item_show {
   @extend .item;
-  @include kanit (16px, 500);
+  @include fira (16px, 500);
   max-height: 25px;
   padding: 8px 4px;
 }

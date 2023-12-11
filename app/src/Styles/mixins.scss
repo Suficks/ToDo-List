@@ -1,5 +1,5 @@
-@mixin kanit ($fs, $fw) {
-  font-family: Kanit;
+@mixin fira ($fs, $fw) {
+  font-family: Fira Sans;
   font-size: $fs;
   font-weight: $fw;
 }

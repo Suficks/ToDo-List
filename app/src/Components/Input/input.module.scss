@@ -9,7 +9,7 @@
   border-radius: 5px;
   outline: none;
 
-  @include kanit (20px, 500);
+  @include fira (20px, 500);
   color: #6C63FF;
 
   &::placeholder {
