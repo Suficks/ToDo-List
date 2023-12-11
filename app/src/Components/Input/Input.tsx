@@ -11,7 +11,6 @@ interface IInputProps {
 }
 
 const Input: FC<IInputProps> = ({ value, placeholder, onChange }) => {
-
   return (
     <input
       value={value}

@@ -61,7 +61,7 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
       <div className={`${isModalOpen ? cn.active : cn.modal}`}>
         <h2 className={cn.title}>{id ? 'CHANGE' : 'NEW'} NOTE</h2>
         <Input
-          value={inputValue}
+          value={inputValue || text}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder='Input your note...'
         />

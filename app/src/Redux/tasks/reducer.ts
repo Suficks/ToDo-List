@@ -56,8 +56,11 @@ const tasks = (state = initialState, action: ActionTypes): TTasksState => {
       return { ...state, tasks: [...state.tasks, action.payload] }
     case DELETE_TASK:
       return { ...state, tasks: state.tasks.filter(item => item.id !== action.payload) }
-    // case CHANGE_TASK:
-    //   return { ...state, tasks: state.tasks.find(item => item.id === action.payload.id).text = action.payload.text }
+    case CHANGE_TASK:
+      const { id, text } = action.payload;
+      const currentTask = state.tasks.findIndex(item => item.id === id);
+      state.tasks[currentTask].text = text;
+      return { ...state, tasks: state.tasks }
     default: return state
   }
 }
