@@ -33,7 +33,7 @@ interface IModalProps {
 }
 
 const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inputValue, addTask, changeTask, editableComment, setEditableComment }) => {
-  const { id, text } = editableComment;
+  const { id } = editableComment;
 
   const modalClose = () => {
     setInputValue('')
@@ -48,9 +48,7 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
       progress: 'incomplete'
     }
 
-    if (id) {
-      changeTask({ id, text: inputValue })
-    }
+    if (id && inputValue) changeTask({ id, text: inputValue })
     else if (inputValue) addTask(task)
 
     modalClose()
@@ -61,7 +59,7 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
       <div className={`${isModalOpen ? cn.active : cn.modal}`}>
         <h2 className={cn.title}>{id ? 'CHANGE' : 'NEW'} NOTE</h2>
         <Input
-          value={inputValue || text}
+          value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder='Input your note...'
         />

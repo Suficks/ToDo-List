@@ -24,12 +24,15 @@ interface ITaskProps {
   changeTaskProgress: (progress: TCurrentTaskProgress) => void
   /** Прогресс по  задачи: выполнена или нет */
   progress: 'complete' | 'incomplete'
+  /** Записать значение инпута с текстом редактируемой задачей */
+  setInputValue: (value: string) => void
 }
 
-const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditableComment, changeTaskProgress, progress }) => {
+const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditableComment, changeTaskProgress, progress, setInputValue }) => {
   const isTaskComplete = (progress === 'complete');
 
   const handleTaskEdit = () => {
+    setInputValue(text)
     setEditableComment({ id, text })
     onModalToggle()
   }
