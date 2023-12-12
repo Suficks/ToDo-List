@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import cn from './select.module.scss';
 import { ReactComponent as Arrow } from '../../Assets/arrow-icon.svg';
 import withSelect from './withSelect';
@@ -35,9 +35,19 @@ const selectOptions: TObjectValues[] = [
 
 const Select: FC<ISelectProps> = ({ setFilterType, selectedType }) => {
   const [expand, setExpand] = useState(false);
+  const selectRef = useRef<HTMLDivElement | null>(null);
+
+  document.addEventListener('click', (e) => {
+    if (!selectRef.current?.contains(e.target as Node)) {
+      setExpand(false)
+    }
+  })
 
   return (
-    <div className={cn.select} onClick={() => setExpand(!expand)}>
+    <div
+      className={cn.select}
+      onClick={() => setExpand(!expand)}
+      ref={selectRef}>
       <p className={cn.selected}>{selectedType}</p>
       <ul className={expand ? cn.options_show : cn.options}>
         {selectOptions.map(({ label, value }) => {
