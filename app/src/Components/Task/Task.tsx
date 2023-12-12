@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import cn from './task.module.scss';
 
 import withTask from './withTask';
@@ -22,10 +22,12 @@ interface ITaskProps {
   setEditableComment: (editableComment: TEditableComment) => void
   /** Изменение прогресса задачи (выполнена/невыполнена) */
   changeTaskProgress: (progress: TCurrentTaskProgress) => void
+  /** Прогресс по  задачи: выполнена или нет */
+  progress: 'complete' | 'incomplete'
 }
 
-const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditableComment, changeTaskProgress }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditableComment, changeTaskProgress, progress }) => {
+  const isTaskComplete = (progress === 'complete');
 
   const handleTaskEdit = () => {
     setEditableComment({ id, text })
@@ -33,8 +35,7 @@ const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditable
   }
 
   const handleCheckbox = () => {
-    setIsChecked(!isChecked)
-    if (isChecked) changeTaskProgress({ id, progress: 'incomplete' })
+    if (isTaskComplete) changeTaskProgress({ id, progress: 'incomplete' })
     else changeTaskProgress({ id, progress: 'complete' })
   }
 
@@ -43,13 +44,14 @@ const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditable
       <label className={cn.label}>
         <input
           type="checkbox"
+          checked={isTaskComplete}
           className={cn.checkbox}
           onChange={handleCheckbox}
         />
         <span className={cn.fake}></span>
       </label>
       <p
-        className={isChecked ? cn.text_checked : cn.text}>{text}</p>
+        className={isTaskComplete ? cn.text_checked : cn.text}>{text}</p>
       <div className={cn.btn_container}>
         <button
           className={cn.edit}

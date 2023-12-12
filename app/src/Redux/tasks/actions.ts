@@ -5,7 +5,7 @@ import {
   SET_SEARCH_VALUE,
   SET_INPUT_VALUE,
   SET_FILTER_TYPE,
-  CHANGE_TASK_PROGRESS
+  CHANGE_TASK_PROGRESS,
 } from "./action-types";
 
 import { TEditableComment } from "Components/Modal/Modal";

@@ -6,7 +6,8 @@ import { setSearchValue } from "Redux/tasks/actions"
 const mapStateToProps = (state: RootState) => {
   return {
     searchValue: state.searchValue,
-    tasks: state.tasks
+    tasks: state.tasks,
+    selectedType: state.selectedType,
   }
 }
 

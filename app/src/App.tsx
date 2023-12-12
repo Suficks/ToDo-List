@@ -8,7 +8,7 @@ import Task from 'Components/Task';
 import Modal from 'Components/Modal';
 import Input from 'Components/Input';
 import withApp from 'withApp';
-import { TTask } from 'Redux/tasks/reducer';
+import { TFilterType, TTask } from 'Redux/tasks/reducer';
 import EmptyImg from './Assets/empty-icon-light.svg';
 
 interface IAppProps {
@@ -22,11 +22,17 @@ interface IAppProps {
   setInputValue: (value: string) => void
   /** Массив с задачами */
   tasks: TTask[]
+  /** Выбранный тип фильтрации */
+  selectedType: TFilterType
 }
 
-const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks }) => {
+const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks, selectedType }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editableComment, setEditableComment] = useState({ id: '', text: '' });
+
+  let filteredTasks = tasks.filter(item => item.progress === selectedType)
+
+  if (selectedType === 'all') filteredTasks = tasks
 
   const onModalToggle = () => {
     setIsModalOpen(!isModalOpen)
@@ -47,17 +53,18 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks }) => {
         <Select />
         <Button className={cn.square} />
       </div>
-      {tasks.length === 0 ? (
+      {filteredTasks.length === 0 ? (
         <div className={cn.empty_wrap}>
           <img className={cn.emptyImg} src={EmptyImg} alt="" />
           <p className={cn.empty}>Empty...</p>
         </div>
       ) : (
-        tasks.map((item: TTask) => (
+        filteredTasks.map((item: TTask) => (
           <Task
             text={item.text}
             key={item.id}
             id={item.id}
+            progress={item.progress}
             onModalToggle={onModalToggle}
             setEditableComment={setEditableComment}
           />
