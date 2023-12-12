@@ -33,7 +33,7 @@ const selectOptions: TObjectValues[] = [
   }
 ]
 
-const Select: FC<ISelectProps> = ({ setFilterType, selectedType = 'ALL' }) => {
+const Select: FC<ISelectProps> = ({ setFilterType, selectedType }) => {
   const [expand, setExpand] = useState(false);
 
   return (
