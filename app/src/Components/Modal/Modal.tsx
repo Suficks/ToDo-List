@@ -7,11 +7,8 @@ import Input from '../Input';
 import withModal from './withModal';
 import { TTask } from 'Redux/tasks/reducer';
 import { v4 as uuidv4 } from 'uuid';
+import { TEditableComment } from "../../Redux/tasks/actions";
 
-export type TEditableComment = {
-  id: string,
-  text: string
-}
 
 interface IModalProps {
   /** Открыто ли модальное окно */

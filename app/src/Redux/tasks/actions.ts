@@ -8,9 +8,16 @@ import {
   CHANGE_TASK_PROGRESS,
 } from "./action-types";
 
-import { TEditableComment } from "Components/Modal/Modal";
 import { TFilterType, TTask } from "./reducer";
-import { TCurrentTaskProgress } from "Components/Task/Task";
+
+export type TEditableComment = {
+  id: string,
+  text: string
+}
+export type TCurrentTaskProgress = {
+  id: string,
+  progress: 'complete' | 'incomplete'
+}
 
 export const addTask = (payload: TTask) => ({
   type: ADD_TASK,

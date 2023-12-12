@@ -2,12 +2,7 @@ import React, { FC } from 'react';
 import cn from './task.module.scss';
 
 import withTask from './withTask';
-import { TEditableComment } from 'Components/Modal/Modal';
-
-export type TCurrentTaskProgress = {
-  id: string,
-  progress: 'complete' | 'incomplete'
-}
+import { TCurrentTaskProgress, TEditableComment } from "../../Redux/tasks/actions";
 
 interface ITaskProps {
   /** Текст задачи */

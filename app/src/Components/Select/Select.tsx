@@ -1,15 +1,10 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import cn from './select.module.scss';
+
 import { ReactComponent as Arrow } from '../../Assets/arrow-icon.svg';
 import withSelect from './withSelect';
 import { TFilterType } from 'Redux/tasks/reducer';
-
-type TObjectValues = {
-  /** Обозначение типа фильтрации */
-  label: string
-  /** Значение типа фильтрации */
-  value: TFilterType
-}
+import { selectOptions } from './data';
 
 interface ISelectProps {
   /** Записать значение селекта с типом фильтрации*/
@@ -18,30 +13,23 @@ interface ISelectProps {
   selectedType: TFilterType
 }
 
-const selectOptions: TObjectValues[] = [
-  {
-    label: 'All',
-    value: 'all',
-  },
-  {
-    label: 'Complete',
-    value: 'complete',
-  },
-  {
-    label: 'Incomplete',
-    value: 'incomplete',
-  }
-]
-
 const Select: FC<ISelectProps> = ({ setFilterType, selectedType }) => {
   const [expand, setExpand] = useState(false);
-  const selectRef = useRef<HTMLDivElement | null>(null);
+  const selectRef = useRef<HTMLDivElement>(null);
 
-  document.addEventListener('click', (e) => {
+  const handleSelectClose = (e: MouseEvent) => {
     if (!selectRef.current?.contains(e.target as Node)) {
       setExpand(false)
     }
-  })
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleSelectClose)
+
+    return () => {
+      document.removeEventListener('click', handleSelectClose)
+    }
+  }, [])
 
   return (
     <div
