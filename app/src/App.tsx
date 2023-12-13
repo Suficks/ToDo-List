@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useLayoutEffect, useState } from 'react';
 import cn from './app.module.scss';
 
 import { ReactComponent as Search } from './Assets/search-icon.svg';
@@ -24,9 +24,13 @@ interface IAppProps {
   tasks: TTask[]
   /** Выбранный тип фильтрации */
   selectedType: TFilterType
+  /** Изменить тему светлая/темная */
+  setTheme: (theme: 'light' | 'dark') => void
+  /** Выбранная тема */
+  theme: string
 }
 
-const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks, selectedType }) => {
+const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks, selectedType, setTheme, theme }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editableComment, setEditableComment] = useState({ id: '', text: '' });
 
@@ -36,6 +40,15 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks, selectedType }
   const onModalToggle = () => {
     setIsModalOpen(!isModalOpen)
   }
+
+  const handleSetTheme = () => {
+    const updatedTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(updatedTheme)
+  }
+
+  useLayoutEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
 
   return (
     <div className={cn.wrapper}>
@@ -50,7 +63,7 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks, selectedType }
           <Search className={cn.search} />
         </div>
         <Select />
-        <Button className={cn.square} />
+        <Button className={cn.square} onClick={handleSetTheme} />
       </div>
       {filteredTasks.length === 0 ? (
         <div className={cn.empty_wrap}>

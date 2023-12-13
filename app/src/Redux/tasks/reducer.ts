@@ -5,7 +5,8 @@ import {
   SET_SEARCH_VALUE,
   SET_INPUT_VALUE,
   SET_FILTER_TYPE,
-  CHANGE_TASK_PROGRESS
+  CHANGE_TASK_PROGRESS,
+  SET_THEME
 }
   from "./action-types"
 
@@ -88,6 +89,8 @@ const tasks = (state = initialState, action: ActionTypes): TTasksState => {
           })
         }
       }
+    case SET_THEME:
+      return { ...state, theme: action.payload }
     default: return state
   }
 }

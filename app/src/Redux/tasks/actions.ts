@@ -6,6 +6,7 @@ import {
   SET_INPUT_VALUE,
   SET_FILTER_TYPE,
   CHANGE_TASK_PROGRESS,
+  SET_THEME
 } from "./action-types";
 
 import { TFilterType, TTask } from "./reducer";
@@ -52,4 +53,9 @@ export const setFilterType = (selectedType: TFilterType) => ({
 export const changeTaskProgress = (progress: TCurrentTaskProgress) => ({
   type: CHANGE_TASK_PROGRESS,
   payload: progress
+} as const)
+
+export const setTheme = (theme: 'light' | 'dark') => ({
+  type: SET_THEME,
+  payload: theme
 } as const)

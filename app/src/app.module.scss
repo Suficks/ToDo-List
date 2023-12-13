@@ -1,11 +1,12 @@
 @import './Styles/fonts.scss';
 @import './Styles/mixins.scss';
+@import './Styles/themeVariables.scss';
 
 body,
 html {
   margin: 0;
   padding: 0;
-  background-color: #ebc2af;
+  background-color: var(--background-color);
 }
 
 button {
@@ -42,7 +43,7 @@ button {
   text-align: center;
 
   @include fira (26px, 500);
-  color: #252525;
+  color: var(--color);
 }
 
 .input_wrap {
@@ -57,6 +58,7 @@ button {
   right: 16px;
   transform: translateY(-50%);
   cursor: pointer;
+  filter: var(--search-icon-color);
 }
 
 .container {
@@ -106,8 +108,6 @@ button {
   }
 }
 
-
-
 .empty_wrap {
   margin: auto;
   text-align: center;
@@ -115,4 +115,5 @@ button {
 
 .empty {
   @include fira (20px, 400);
+  color: var(--color);
 }
