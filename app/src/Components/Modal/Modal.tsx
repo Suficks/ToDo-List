@@ -64,7 +64,7 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
           className={(!inputValue && id) ? cn.error_active : cn.error}
           id="inputCheck"
           role="tooltip">
-          Пожалуйста, заполните поле
+          Please fill the field
         </div>
         <div className={cn.container}>
           <Button

@@ -92,7 +92,7 @@
 }
 
 .error {
-  @include fira (16px, 500);
+  @include fira (16px, 400);
   margin-top: 10px;
 
   transition: 0.3s ease;
