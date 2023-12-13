@@ -60,15 +60,22 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
           onChange={(e) => setInputValue(e.target.value)}
           placeholder='Input your note...'
         />
+        <div
+          className={(!inputValue && id) ? cn.error_active : cn.error}
+          id="inputCheck"
+          role="tooltip">
+          Пожалуйста, заполните поле
+        </div>
         <div className={cn.container}>
           <Button
             className={cn.reset}
             text='CANCEL'
             onClick={modalClose} />
           <Button
-            className={cn.apply}
+            className={inputValue ? cn.apply : cn.disabled}
             text='APPLY'
-            onClick={handleApply} />
+            onClick={handleApply}
+            disabled={!Boolean(inputValue)} />
         </div>
       </div>
       <div

@@ -51,6 +51,16 @@
   }
 }
 
+.disabled {
+  @extend .apply;
+  background-color: #a39fff;
+  cursor: auto;
+
+  &:hover {
+    background-color: #a39fff;
+  }
+}
+
 .active {
   @extend .modal;
   transform: translate(-50%, -50%);
@@ -78,4 +88,19 @@
   @extend .overlay;
   opacity: 1;
   pointer-events: all;
+}
+
+.error {
+  @include fira (16px, 500);
+  margin-top: 10px;
+
+  transition: 0.3s ease;
+  opacity: 0;
+  color: red;
+  text-align: start;
+}
+
+.error_active {
+  @extend .error;
+  opacity: 1;
 }

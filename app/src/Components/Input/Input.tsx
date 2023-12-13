@@ -18,6 +18,7 @@ const Input: FC<IInputProps> = ({ value, placeholder, onChange }) => {
       type="text"
       className={cn.input}
       placeholder={placeholder}
+      aria-labelledby="inputCheck"
     />
   )
 }
