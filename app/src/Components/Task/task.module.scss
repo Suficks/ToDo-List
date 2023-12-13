@@ -40,6 +40,7 @@
   border: 1px solid #6C63FF;
   border-radius: 2px;
   cursor: pointer;
+  box-sizing: border-box;
 
   &:before {
     position: absolute;
@@ -102,31 +103,19 @@
 
 .edit,
 .delete {
-  width: 20px;
   height: 20px;
-  filter: var(--edit-icon-color);
+  font-size: 0;
+  background-color: transparent;
+  transition: 0.3s ease;
 
   &:hover {
-    background-color: transparent
+    background-color: transparent;
+    --edit-icon-color: red;
   }
 }
 
 .edit {
-  background: url('../../Assets/edit-icon.svg') no-repeat;
-  background-size: 20px 20px;
-  transition: 0.2s ease;
-
   &:hover {
-    filter: invert(38%) sepia(95%) saturate(2776%) hue-rotate(228deg) brightness(100%) contrast(104%);
-  }
-}
-
-.delete {
-  background: url('../../Assets/delete-icon.svg');
-  background-size: 20px 20px;
-  transition: 0.2s ease;
-
-  &:hover {
-    filter: invert(9%) sepia(100%) saturate(7312%) hue-rotate(7deg) brightness(94%) contrast(110%);
+    --edit-icon-color: #6C63FF;
   }
 }
