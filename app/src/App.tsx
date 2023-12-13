@@ -30,10 +30,8 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks, selectedType }
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editableComment, setEditableComment] = useState({ id: '', text: '' });
 
-  let filteredTasks = tasks.filter(item => item.progress === selectedType)
-  filteredTasks = tasks.filter(item => item.text.includes(searchValue))
-
-  if (selectedType === 'all') filteredTasks = tasks
+  let filteredTasks = selectedType === 'all' ? tasks : tasks.filter(item => item.progress === selectedType)
+  filteredTasks = filteredTasks.filter(item => item.text.toLowerCase().includes(searchValue))
 
   const onModalToggle = () => {
     setIsModalOpen(!isModalOpen)
