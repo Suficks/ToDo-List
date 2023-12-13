@@ -1,4 +1,4 @@
-import React, { FC, useLayoutEffect, useState } from 'react';
+import React, { FC, useEffect, useLayoutEffect, useState } from 'react';
 import cn from './app.module.scss';
 
 import Button from './Components/Button';
@@ -49,6 +49,10 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks, selectedType, 
   useLayoutEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
+
+  useEffect(() => {
+    localStorage.setItem('TODO_LIST', JSON.stringify({ theme, tasks }))
+  }, [tasks, theme])
 
   return (
     <div className={cn.wrapper}>

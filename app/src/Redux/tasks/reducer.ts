@@ -14,8 +14,10 @@ import * as actions from './actions'
 
 export type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never
 export type ActionTypes = ReturnType<InferValueTypes<typeof actions>>
-
 export type TFilterType = 'all' | 'complete' | 'incomplete'
+
+const tasksFromLocalStorage = JSON.parse(localStorage.getItem('TODO_LIST') || '{}').tasks
+const themeFromLocalStorage = JSON.parse(localStorage.getItem('TODO_LIST') || '{}').theme
 
 type TTasksState = {
   /** Значение строки поиска */
@@ -43,8 +45,8 @@ const initialState: TTasksState = {
   searchValue: '',
   inputValue: '',
   selectedType: 'all',
-  theme: 'light',
-  tasks: []
+  theme: themeFromLocalStorage || 'light',
+  tasks: tasksFromLocalStorage || []
 }
 
 const tasks = (state = initialState, action: ActionTypes): TTasksState => {
