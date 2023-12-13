@@ -6,6 +6,7 @@ html[data-theme='dark'] {
   --checked-text-color: rgba(255, 255, 255, 0.50);
   --search-icon-color: #FFFFFF;
   --edit-icon-color: #CDCDCD;
+  --background-img: url('.././Assets/sun-icon.svg')
 }
 
 html[data-theme='light'] {
@@ -16,4 +17,5 @@ html[data-theme='light'] {
   --checked-text-color: rgba(37, 37, 37, 0.50);
   --search-icon-color: #6C63FF;
   --edit-icon-color: #252525;
+  --background-img: url('.././Assets/square-btn.png');
 }

@@ -78,7 +78,8 @@ button {
     transform: translate(-50%, -50%);
     content: '';
 
-    background: url('./Assets/square-btn.png');
+    background: var(--background-img) no-repeat;
+    background-position: center;
     width: 35px;
     height: 35px
   }
