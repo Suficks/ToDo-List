@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import cn from './modal.module.scss';
 
 import Button from '../Button';
@@ -30,6 +30,7 @@ interface IModalProps {
 }
 
 const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inputValue, addTask, changeTask, editableComment, setEditableComment }) => {
+  const [isEmptyField, setIsEmptyField] = useState(false)
   const { id } = editableComment;
 
   const modalClose = () => {
@@ -45,10 +46,20 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
       progress: 'incomplete'
     }
 
-    if (id && inputValue) changeTask({ id, text: inputValue })
-    else if (inputValue) addTask(task)
+    if (id && inputValue) {
+      changeTask({ id, text: inputValue });
+      modalClose()
+    }
+    else if (inputValue) {
+      addTask(task);
+      modalClose()
+    }
+    else { setIsEmptyField(true) }
+  }
 
-    modalClose()
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value)
+    if (inputValue) setIsEmptyField(false)
   }
 
   return (
@@ -57,11 +68,11 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
         <h2 className={cn.title}>{id ? 'CHANGE' : 'NEW'} NOTE</h2>
         <Input
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={onInputChange}
           placeholder='Input your note...'
         />
         <div
-          className={(!inputValue && id) ? cn.error_active : cn.error}
+          className={isEmptyField ? cn.error_active : cn.error}
           id="inputCheck"
           role="tooltip">
           Please fill the field
@@ -72,10 +83,9 @@ const Modal: FC<IModalProps> = ({ isModalOpen, onModalToggle, setInputValue, inp
             text='CANCEL'
             onClick={modalClose} />
           <Button
-            className={inputValue ? cn.apply : cn.disabled}
+            className={cn.apply}
             text='APPLY'
-            onClick={handleApply}
-            disabled={!Boolean(inputValue)} />
+            onClick={handleApply} />
         </div>
       </div>
       <div

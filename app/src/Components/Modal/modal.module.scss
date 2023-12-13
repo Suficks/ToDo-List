@@ -52,16 +52,6 @@
   }
 }
 
-.disabled {
-  @extend .apply;
-  background-color: #a39fff;
-  cursor: auto;
-
-  &:hover {
-    background-color: #a39fff;
-  }
-}
-
 .active {
   @extend .modal;
   transform: translate(-50%, -50%);
