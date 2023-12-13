@@ -7,6 +7,7 @@ html {
   margin: 0;
   padding: 0;
   background-color: var(--background-color);
+  transition: 0.5s ease;
 }
 
 button {
@@ -22,10 +23,11 @@ button {
   color: #FFF;
   transition: 0.3s ease;
 
+  box-shadow: var(--box-shadow);
+
   &:hover {
     background-color: #534CC2;
   }
-
 }
 
 .wrapper {
@@ -44,6 +46,7 @@ button {
 
   @include fira (26px, 500);
   color: var(--color);
+  transition: 0.5s ease;
 }
 
 .input_wrap {
@@ -81,7 +84,8 @@ button {
     background: var(--background-img) no-repeat;
     background-position: center;
     width: 35px;
-    height: 35px
+    height: 35px;
+    transition: 0.1s ease;
   }
 }
 
@@ -115,4 +119,5 @@ button {
 .empty {
   @include fira (20px, 400);
   color: var(--color);
+  transition: 0.5s ease;
 }

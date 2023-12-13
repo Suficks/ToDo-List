@@ -83,17 +83,23 @@
 
 .text {
   margin: 0 0 0 40px;
+
   word-break: break-all;
   @include fira (20px, 500);
-  color: var(--color)
+  color: var(--color);
+
+  transition: 0.5s ease;
 }
 
 .text_checked {
   @extend .text;
+
   text-decoration: line-through;
   text-decoration-color: var(--checked-text-color);
   text-decoration-thickness: 1px;
+
   color: var(--checked-text-color);
+  transition: 0.5s ease;
 }
 
 .btn_container {
@@ -106,7 +112,9 @@
   height: 20px;
   font-size: 0;
   background-color: transparent;
-  transition: 0.3s ease;
+
+  transition: 0.5s ease;
+  box-shadow: none;
 
   &:hover {
     background-color: transparent;
