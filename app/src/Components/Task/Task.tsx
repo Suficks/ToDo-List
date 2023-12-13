@@ -39,17 +39,20 @@ const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditable
 
   return (
     <div className={cn.task}>
-      <label className={cn.label}>
-        <input
-          type="checkbox"
-          checked={isTaskComplete}
-          className={cn.checkbox}
-          onChange={handleCheckbox}
-        />
-        <span className={cn.fake}></span>
-      </label>
-      <p
-        className={isTaskComplete ? cn.text_checked : cn.text}>{text}</p>
+      <div className={cn.text_wrap}>
+        <label className={cn.label}>
+          <input
+            type="checkbox"
+            checked={isTaskComplete}
+            className={cn.checkbox}
+            onChange={handleCheckbox}
+          />
+          <span className={cn.fake}></span>
+        </label>
+        <p
+          className={isTaskComplete ? cn.text_checked : cn.text}>
+          {text}</p>
+      </div>
       <div className={cn.btn_container}>
         <button
           className={cn.edit}
@@ -59,7 +62,7 @@ const Task: FC<ITaskProps> = ({ text, deleteTask, id, onModalToggle, setEditable
           onClick={() => { deleteTask(id) }}
         ></button>
       </div>
-    </div>
+    </div >
   )
 }
 

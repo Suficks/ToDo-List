@@ -31,6 +31,7 @@ const App: FC<IAppProps> = ({ searchValue, setSearchValue, tasks, selectedType }
   const [editableComment, setEditableComment] = useState({ id: '', text: '' });
 
   let filteredTasks = tasks.filter(item => item.progress === selectedType)
+  filteredTasks = tasks.filter(item => item.text.includes(searchValue))
 
   if (selectedType === 'all') filteredTasks = tasks
 

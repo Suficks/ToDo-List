@@ -21,6 +21,9 @@
 }
 
 .label {
+  display: block;
+  width: 0;
+  height: 0;
   line-height: 0;
 }
 
@@ -73,10 +76,13 @@
   opacity: 1;
 }
 
-.text {
-  margin: 0;
-  width: 80%;
+.text_wrap {
+  display: flex;
+}
 
+.text {
+  margin: 0 0 0 40px;
+  word-break: break-all;
   @include fira (20px, 500);
 }
 
@@ -86,6 +92,11 @@
   text-decoration-color: rgba(37, 37, 37, 0.50);
   text-decoration-thickness: 1px;
   color: rgba(37, 37, 37, 0.50);
+}
+
+.btn_container {
+  display: flex;
+  gap: 10px;
 }
 
 .edit,
@@ -99,8 +110,6 @@
 }
 
 .edit {
-  margin-right: 15px;
-
   background: url('../../Assets/edit-icon.svg') no-repeat;
   background-size: 20px 20px;
   transition: 0.2s ease;
