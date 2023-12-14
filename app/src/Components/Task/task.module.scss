@@ -95,7 +95,7 @@
   @extend .text;
 
   text-decoration: line-through;
-  text-decoration-color: var(--checked-text-color);
+  text-decoration-color: var(--color);
   text-decoration-thickness: 1px;
 
   color: var(--checked-text-color);
